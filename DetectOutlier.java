@@ -16,6 +16,13 @@ public class DetectOutlier {
 		this.list = new LinkedList();
 	}
 	
+	// getters
+	
+	public void getDateAndSymbol() throws FileNotFoundException {
+		store();
+		list.Output(date, symbol);
+	}
+	
 	/**
 	 * reformats the date
 	 * @param date
@@ -31,6 +38,10 @@ public class DetectOutlier {
 		return year + "-" + month + "-" + day;
 	}
 	
+	/**
+	* scans the files and stores information
+	*
+	*/
 	public void store() throws FileNotFoundException {
 		symbol = symbol.toUpperCase();
 		String newSymbol = "./" + symbol + CSV;
@@ -67,8 +78,4 @@ public class DetectOutlier {
 		scanner.close();
 	}
 	
-	public void getDateAndSymbol() throws FileNotFoundException {
-		store();
-		list.Output(date, symbol);
-	}
 }

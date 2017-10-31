@@ -1,3 +1,8 @@
+/**
+ * Class that helps extract information from a Link from the LinkedList
+ * @author tinaaquino
+ */
+
 public class Link {
 
 	private StockData stock;

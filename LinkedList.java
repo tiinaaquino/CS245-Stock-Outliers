@@ -1,3 +1,9 @@
+/**
+ * Class that creates a list of links, and calculates and displays
+ * outliers
+ * @author tinaaquino
+ */
+
 public class LinkedList {
 
 	private Link head;
@@ -20,10 +26,20 @@ public class LinkedList {
 	}
 	
 	// getters
+	/**
+	 * @return
+	 * 		size of the linked list
+	 */
 	public int size() {
 		return size;
 	}
 	
+	/**
+	 * @param position
+	 * 		position to get the Object from
+	 * @return
+	 * 		returns the Object
+	 */
 	public Link get(int position) {
 		ListIterator it = new ListIterator(head);
 		int i = 0;
@@ -39,6 +55,13 @@ public class LinkedList {
 		return null;
 	}
 	
+	/**
+	 * gets the previous link at the given position
+	 * @param position
+	 * @return
+	 * 		returns the previous link
+	 * @throws Exception
+	 */
 	public Link getPrevLink(int position) throws Exception {
 		ListIterator it = new ListIterator(head);
 		
@@ -64,6 +87,11 @@ public class LinkedList {
 		return null;
 	}
 	
+	/**
+	 * calculates and returns variance
+	 * @param date
+	 * @return
+	 */
 	public double getVarian(String date) {
 		Link current = head;
 		boolean value = false;
@@ -108,14 +136,11 @@ public class LinkedList {
 	}
 	
 	//other functions
-	/**
-	 * add (Object data)
-	 * add(int position, Object data)
-	 * remove (int position)
-	 * iterator()
-	 * 
-	 */
 	
+	/**
+	 * adds a new element to the end of the linked list
+	 * @param data
+	 */
 	public void add(StockData data) {
 		if (head == null) {
 			head = new Link(data);
@@ -136,6 +161,12 @@ public class LinkedList {
 		size++;
 	}
 	
+	/**
+	 * adds a new element on the linked list to the given position
+	 * @param position
+	 * @param data
+	 * @throws Exception
+	 */
 	public void add(int position, StockData data) throws Exception{
 		if (head == null) {
 			head = new Link(data);
@@ -169,10 +200,20 @@ public class LinkedList {
 		size++;
 	}
 	
+	/**
+	 * check to see if the linked list is empty
+	 * @return
+	 * 		true if the list is empty, otherwise returns false
+	 */
 	public boolean empty() {
 		return size == 0;
 	}
 	
+	/**
+	 * removes the element at the given position
+	 * @param position
+	 * @throws Exception
+	 */
 	public void remove(int position) throws Exception {
 		if (!empty()) {
 			Link prevLink = getPrevLink(position);
@@ -185,6 +226,13 @@ public class LinkedList {
 		}
 	}
 	
+	/**
+	 * converts the format of the date to fit "YYYY-MM-DD"
+	 * @param date
+	 * 		"MM/DD/YY"
+	 * @return
+	 * 		"YYYY-MM-DD"
+	 */
 	public String convertDate(String date) {
 		String day = date.substring(8, date.length() - 1).equals("0") ? date.substring(9, date.length())
 				: date.substring(8, date.length());
@@ -193,6 +241,11 @@ public class LinkedList {
 		return (year + month + day);
 	}
 	
+	/**
+	 * compares dates to the ending date
+	 * @param target
+	 * @return
+	 */
 	public boolean compareDate(Link target) {
 		int date = Integer.parseInt(convertDate(target.getInfo().getDate()));
 		if (date <= endingDate) {
@@ -201,6 +254,11 @@ public class LinkedList {
 		return false;
 	}
 	
+	/**
+	 * prints the outliers
+	 * @param date
+	 * @param symbol
+	 */
 	public void Output(String date, String symbol) {
 		double varian = getVarian(date);
 		System.out.println();

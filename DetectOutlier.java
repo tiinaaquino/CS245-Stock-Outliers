@@ -2,6 +2,10 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.*;
 
+/**
+ * Scans the CSV file and stores the information
+ * @author tinaaquino
+ */
 public class DetectOutlier {
 	
 	private final String CSV = ".csv";
@@ -14,13 +18,6 @@ public class DetectOutlier {
 		this.symbol = symbol;
 		this.date = date;
 		this.list = new LinkedList();
-	}
-	
-	// getters
-	
-	public void getDateAndSymbol() throws FileNotFoundException {
-		store();
-		list.Output(date, symbol);
 	}
 	
 	/**
@@ -39,9 +36,9 @@ public class DetectOutlier {
 	}
 	
 	/**
-	* scans the files and stores information
-	*
-	*/
+	 * scans the file and stores the information
+	 * @throws FileNotFoundException
+	 */
 	public void store() throws FileNotFoundException {
 		symbol = symbol.toUpperCase();
 		String newSymbol = "./" + symbol + CSV;
@@ -78,4 +75,12 @@ public class DetectOutlier {
 		scanner.close();
 	}
 	
+	/**
+	 * gets the date and prints the result
+	 * @throws FileNotFoundException
+	 */
+	public void getDateAndSymbol() throws FileNotFoundException {
+		store();
+		list.Output(date, symbol);
+	}
 }

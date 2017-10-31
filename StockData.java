@@ -1,5 +1,6 @@
-/*
- * class to extract data from the file
+/**
+ * Class that has mutators / accessors for fields from the CSV
+ * @author tinaaquino
  */
 
 public class StockData {
